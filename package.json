@@ -1,0 +1,10 @@
+{
+  "name": "microservices-kafka-docker-playground",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {},
+  "devDependencies": {
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  }
+}
