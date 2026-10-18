@@ -1,5 +1,6 @@
 import { getPool } from "shared";
 import { User, UserRole } from "../types/auth.types";
+import { UUID } from "node:crypto";
 
 
 export async function findByEmail(email: string): Promise<User | null>{
@@ -10,6 +11,19 @@ export async function findByEmail(email: string): Promise<User | null>{
         WHERE  email = $1
         `,
         [email]
+    )
+
+    return result.rows[0]?? null;
+}
+
+export async function findById(userId: string): Promise<User | null>{
+    const result = await getPool().query<User>(
+        `
+        SELECT *
+        FROM users
+        WHERE  id = $1
+        `,
+        [userId]
     )
 
     return result.rows[0]?? null;
@@ -32,3 +46,4 @@ export async function createUser(input:{
 
     return result.rows[0];
 }
+

@@ -9,3 +9,8 @@ export type User = {
     role: UserRole,
     created_at: Date
 }
+
+export type JWTPayload ={
+    userId: string,
+    role: UserRole
+}
