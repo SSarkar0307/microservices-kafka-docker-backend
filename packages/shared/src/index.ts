@@ -8,4 +8,7 @@ export {httpLogger} from "./logger/httpLogger"
 export {successResponse, failResponse} from './response/response'
 
 export {validateBody} from './validation/validateBody'
+export type {JWTPayload, UserRole} from './auth/types'
+export {signToken, verifyToken} from './auth/jwt'
+export {requireGatewaySecret} from './auth/gatewayAuth'
 

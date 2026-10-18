@@ -1,17 +1,19 @@
-import { AppError, getPool } from "shared";
+import { AppError, getPool, signToken } from "shared";
 import { LoginInput, RegisterInput } from "../schemas/auth.schemas";
 import { createUser, findByEmail, findById } from "../repositories/user.repo";
 import bcrypt from 'bcryptjs'
 import { convertToPublicUser } from "../utils/auth.utils";
-import { signToken } from "../utils/jwt";
 
 
 export async function register(input: RegisterInput){
     const existing = await findByEmail(input.email);
 
     if(existing){
+        console.log("USER FOUND!!!!")
         throw new AppError(409, "Email already registered")
     }
+
+    console.log("USER FOUND!!!!")
 
     const passwordHash = await bcrypt.hash(input.password, 10);
     const user = await createUser({

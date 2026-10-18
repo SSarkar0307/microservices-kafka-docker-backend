@@ -6,6 +6,7 @@ import helmet from 'helmet'
 import rateLimit, { MINUTE } from 'express-rate-limit'
 import { AppError, httpLogger, logger, successResponse } from 'shared'
 import { createProxyMiddleware } from 'http-proxy-middleware'
+import { gatewayAuth } from './middleware/gatewayAuth'
 
 
 config({path : resolve(process.cwd(), ".env")})
@@ -35,6 +36,7 @@ app.use('/health', (req, res)=>{
 })
 
 app.use("/auth",
+    gatewayAuth,
     createProxyMiddleware({
         target: AUTH_SERVICE_URL,
         changeOrigin : true,

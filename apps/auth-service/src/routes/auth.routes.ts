@@ -10,7 +10,7 @@ router.post('/register', validateBody(registerSchema), authController.register);
 
 router.post('/login', validateBody(loginSchema), authController.login);
 
-router.post('/me',  authController.getMe);
+router.get('/me',  authController.getMe);
 
 export default router;
 
