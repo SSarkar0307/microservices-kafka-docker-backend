@@ -13,14 +13,14 @@ export async function register(input: RegisterInput){
         throw new AppError(409, "Email already registered")
     }
 
-    console.log("USER FOUND!!!!")
+    // console.log("USER FOUND!!!!")
 
     const passwordHash = await bcrypt.hash(input.password, 10);
     const user = await createUser({
         name: input.name,
         email: input.email,
         password_hash: passwordHash,
-        role : 'USER'
+        role : input.role === 'ADMIN' ? "ADMIN" : "USER" 
     })
 
     return convertToPublicUser(user);

@@ -28,11 +28,21 @@ const rbacRules : RBACRule[] = [
         path: '/tasks',
         roles: ["USER", "ADMIN"]
     },
-    // {
-    //     method: 'POST',
-    //     path: '/auth/login'
-    //     roles: ["USER", "ADMIN"]
-    // },
+    {
+        method: 'GET',
+        path: '/tasks',
+        roles: ["USER", "ADMIN"]
+    },
+    {
+        method: 'GET',
+        path: '/tasks/:id',
+        roles: ["USER", "ADMIN"]
+    },
+    {
+        method: 'DELETE',
+        path: '/tasks/:id',
+        roles: ["ADMIN"]
+    },
     
 ]
 
@@ -43,7 +53,7 @@ function matchPath(pattern: string, actual: string): boolean{
     const patternParts = pattern.split("/")
     const actualParts = actual.split("/")
 
-    if(pattern.length !== actualParts.length) return false
+    if(patternParts.length !== actualParts.length) return false
 
     return patternParts.every(
         (part, index) => part.startsWith(":") 

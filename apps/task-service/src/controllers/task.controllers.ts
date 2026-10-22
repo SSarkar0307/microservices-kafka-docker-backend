@@ -30,3 +30,58 @@ export async function createTask(
         next(err);
     }
 }
+
+export async function listTasks(
+    req: Request,
+    res: Response,
+    next: NextFunction
+) {
+    try{
+
+        const {userId, role} = requireIdentity(req);
+
+        const tasks = await taskService.listTasks(userId, role);
+
+        successResponse(res, {tasks});
+
+    }catch (err){
+        next(err);
+    }
+}
+export async function getSingleTask(
+    req: Request,
+    res: Response,
+    next: NextFunction
+) {
+    try{
+
+        const {userId, role} = requireIdentity(req);
+        const taskId = String(req.params.id);
+        
+        const task = await taskService.getSingleTask(taskId, userId, role);
+        
+        successResponse(res, {task});
+        
+    }catch (err){
+        next(err);
+    }
+}
+export async function deleteSingleTask(
+    req: Request,
+    res: Response,
+    next: NextFunction
+) {
+    try{
+        
+        const {userId, role} = requireIdentity(req);
+        const taskId = String(req.params.id);
+        
+
+        const deletedId= await taskService.deleteSingleTask(taskId, userId, role);
+
+        successResponse(res, {deletedId});
+
+    }catch (err){
+        next(err);
+    }
+}

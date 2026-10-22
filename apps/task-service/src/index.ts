@@ -7,7 +7,7 @@ import taskRoutes from './routes/task.routes'
 config({ path : resolve(process.cwd(), ".env")});
 config({ path : resolve(process.cwd(), "../../.env")});
 
-const PORT = process.env.AUTH_PORT || 3002;
+const PORT = process.env.TASK_PORT || 3002;
 
 const app = express();
 
