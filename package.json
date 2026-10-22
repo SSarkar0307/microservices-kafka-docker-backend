@@ -5,6 +5,7 @@
   "scripts": {
     "dev-auth": "npm run dev -w auth-service",
     "dev-api-gateway": "npm run dev -w api-gateway",
+    "dev-task-service": "npm run dev -w task-service",
     "db:migrate": "tsx scripts/db-migrate.ts"
   },
   "workspaces": [

@@ -23,11 +23,11 @@ const rbacRules : RBACRule[] = [
         path: '/auth/me',
         roles: ["USER", "ADMIN"]
     },
-    // {
-    //     method: 'POST',
-    //     path: '/auth/login'
-    //     roles: ["USER", "ADMIN"]
-    // },
+    {
+        method: 'POST',
+        path: '/tasks',
+        roles: ["USER", "ADMIN"]
+    },
     // {
     //     method: 'POST',
     //     path: '/auth/login'
