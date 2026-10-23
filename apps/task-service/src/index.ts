@@ -16,7 +16,7 @@ app.use(httpLogger);
 app.use(express.json());
 
 app.get("/health", (req, res, next)=>{
-    successResponse(res, {service: "auth-service"})
+    successResponse(res, {service: "media-service"})
 })
 app.use("/tasks", requireGatewaySecret, taskRoutes)
 
